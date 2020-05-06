@@ -22,3 +22,5 @@ Da root/models/research/slim
 python setup.py build
 python setup.py install
 ```
+
+WIP...
