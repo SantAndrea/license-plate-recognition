@@ -8,8 +8,9 @@ Quest istruzioni guidano nell'installazione del progetto su una macchina, a scop
 
 ### Prerequisiti
 
-- TensorFlow 1.14
-- TensorFlow-gpu 1.14 (opzionale)
+- tensorflow 1.14
+- tensorflow-gpu 1.14 (opzionale)
+- tensorflow-object_detection_api
 - pandas
 - numpy
 - awscli
