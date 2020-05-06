@@ -28,7 +28,7 @@ Per il training è stato usato il tool <b>OIDv4 Toolkit</b> per recuperare le im
 
 Da <i>root</i> digitare i seguenti comandi:
 ```
-git clone https://github.com/pythonlessons/OIDv4_ToolKit.git
+git clone https://github.com/EscVM/OIDv4_ToolKit.git
 ```
 e, successivamente, entrando nella cartella appena creata, digitare
 ```
@@ -42,4 +42,29 @@ python main.py downloader --classes 'Vehicle Registration Plate' --type_csv trai
 Il programma chiederà anche di scaricare dei file aggiuntivi. Ripetere la stessa operazione per i file di test:
 ```
 python main.py downloader --classes 'Vehicle Registration Plate' --type_csv test --limit 400
+```
+La struttura finale delle cartelle dopo il download dovrebbe somigliare a questa:
+```
+OIDv4_ToolKit
+│    main.py
+│    ...
+└─── OID
+    │
+    └─── csv_folder
+    │   │
+    │   └─── class-descriptions-boxable.csv
+    │   │
+    │   └─── test-annotations-bbox.csv
+    │   │
+    │   └─── train-annotations-bbox.csv
+    └─── OID
+        │
+        └─── Dataset
+            │
+            └─── train
+            |   │
+            |   └─── Vehicle Registration Plate
+            └─── test
+                |
+                └─── Vehicle Registration Plate
 ```
