@@ -17,7 +17,7 @@ Clonare la repository tensorflow/models nella directory del progetto, che chiame
 In caso di problemi con le librerie ```slim```, occorre compilarle.
 
 ```
-Da root/models/research/slim
+# Da root/models/research/slim
 
 python setup.py build
 python setup.py install
