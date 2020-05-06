@@ -12,9 +12,13 @@ Queste istruzioni guidano nell'installazione del progetto su una macchina, a sco
 - tensorflow-gpu 1.14 (opzionale)
 - tensorflow-object_detection_api
 
-Clonare la repository tensorflow/models nella directory del progetto, che chiameremo ```<root>```
+Clonare la repository tensorflow/models nella directory del progetto, che chiameremo ```<root>```, e seguire le istruzioni che si trovano alla pagina https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md (saltare il passaggio COCO API installation).
+
+In caso di problemi con le librerie ```slim```, occorre compilarle.
 
 ```
-git clone https://github.com/tensorflow/models.git
-```
+Da root/models/research/slim
 
+python setup.py build
+python setup.py install
+```
