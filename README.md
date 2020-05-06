@@ -8,18 +8,16 @@ Quest istruzioni guidano nell'installazione del progetto su una macchina, a scop
 
 ### Prerequisiti
 
-
+- TensorFlow 1.14
+- TensorFlow-gpu 1.14 (opzionale)
+- pandas
+- numpy
+- awscli
+- urllib3
+- tqdm
+- opencv-python
 
 ```
 Give examples
 ```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
