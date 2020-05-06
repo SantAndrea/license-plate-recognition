@@ -2,13 +2,19 @@ from PIL import Image
 import pandas as pd
 import glob
 import os
+from argparse import ArgumentParser
+
+parser = ArgumentParser()
+parser.add_argument("--path", help="Percorso di input. Es: 'root/train/'")
+args = parser.parse_args()
+PATH = args.path
 
 csvlist = []
-for file in glob.glob('/content/OIDv4_ToolKit/OID/Dataset/train/Vehicle registration plate/' + 'Label/*.txt'):
+for file in glob.glob(PATH + 'Label/*.txt'):
     f = open(file, "r")
     for x in f.readlines():
         split = x.split()
-        image = Image.open('/content/OIDv4_ToolKit/OID/Dataset/train/Vehicle registration plate/' + os.path.splitext(os.path.basename(f.name))[0]+'.jpg')
+        image = Image.open(PATH + os.path.splitext(os.path.basename(f.name))[0]+'.jpg')
         value = (os.path.splitext(os.path.basename(f.name))[0]+'.jpg',
                   int(image.size[0]),
                   int(image.size[1]),
@@ -21,4 +27,4 @@ for file in glob.glob('/content/OIDv4_ToolKit/OID/Dataset/train/Vehicle registra
         csvlist.append(value)
 column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
 txt_df = pd.DataFrame(csvlist, columns=column_name)
-txt_df.to_csv('/content/OIDv4_ToolKit/OID/Dataset/train/train_labels.csv', index=None)
+txt_df.to_csv(PATH + 'train_labels.csv', index=None)
