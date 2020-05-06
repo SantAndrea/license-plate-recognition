@@ -68,8 +68,8 @@ OIDv4_ToolKit
                 |
                 └─── Vehicle Registration Plate
 ```
-Nelle cartelle in train e in test sono presenti le immagini scaricate e una cartella <b>Label</b>, contenente un file <i>.txt</i> per ciacuna immagine. Ogni file indica le coordinate di uno o più <i>bounding box</i> all'interno della foto>. Per esempio:
+Nelle cartelle in train e in test sono presenti le immagini scaricate e una cartella <b>Label</b>, contenente un file <i>.txt</i> per ciacuna immagine. Ogni file indica le coordinate di uno o più <i>bounding box</i> all'interno della foto. Per esempio:
 ```
 Vehicle registration plate 624.0 609.920256 691.84 624.639744
 ```
-Tuttavia, per procedere con l'allenamento con l'API, abbiamo bisogno di ricavarci dei file <i>.record</i> da poter fornire alla funzione di train, uno per il training set e uno per il test set. Prima di convertire i label nel formato record di TF abbiamo bisogno di raggrupparli in un CSV nel formato Pascal VOC. Ne verranno creati due separati tramite lo script
+Tuttavia, per procedere con l'allenamento con l'API, abbiamo bisogno di ricavarci dei file <i>.record</i> da poter fornire alla funzione di train, uno per il training set e uno per il test set. Prima di convertire i label nel formato record di TF abbiamo bisogno di raggrupparli in un CSV nel formato Pascal VOC. Ne verranno creati due separati tramite lo script <b>OpenImagesTXT_to_TensorFlow_CSV.py</b>
