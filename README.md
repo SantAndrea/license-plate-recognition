@@ -15,7 +15,6 @@ Queste istruzioni guidano nell'installazione del progetto su una macchina, a sco
 Clonare la repository tensorflow/models nella directory del progetto, che chiameremo ```<root>```, e seguire le istruzioni che si trovano alla pagina https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md (saltare il passaggio COCO API installation).
 
 In caso di problemi con le librerie ```slim```, occorre compilarle.
-
 ```
 Da root/models/research/slim
 
@@ -23,4 +22,24 @@ python setup.py build
 python setup.py install
 ```
 
-WIP...
+### Training
+
+Per il training è stato usato il tool <b>OIDv4 Toolkit</b> per recuperare le immagini da dare in input alla rete durante l'addestramento.
+
+Da <i>root</i> digitare i seguenti comandi:
+```
+git clone https://github.com/pythonlessons/OIDv4_ToolKit.git
+```
+e, successivamente, entrando nella cartella appena creata, digitare
+```
+pip install -r requirements.txt
+```
+
+Per scaricare le immagini digitare il seguente comando:
+```
+python main.py downloader --classes 'Vehicle Registration Plate' --type_csv train --limit 2000
+```
+Il programma chiederà anche di scaricare dei file aggiuntivi. Ripetere la stessa operazione per i file di test:
+```
+python main.py downloader --classes 'Vehicle Registration Plate' --type_csv test --limit 400
+```
