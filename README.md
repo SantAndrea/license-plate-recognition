@@ -123,3 +123,15 @@ Esempio:
 ```
 python3 generate_tfrecord.py --csv_input=data/train_labels.csv  --output_path=data/train.record
 ```
+
+Una volta creati i file si può iniziare ad addestrare un modello. Il modello originariamente scelto è stato <b>ssd_mobilenet_v1_coco_2018_01_28</b>, incluso in questa repository.
+Esempio:
+```
+python3 object_detection/legacy/train.py --logtostderr --train_dir=../targa_graph --pipeline_config_path=object_detection/training/ssd_mobilenet_v1_pets.config
+```
+Il modello addestrato verrà salvato in ```train_dir```
+
+Come ultima cosa, è necessario esportare un grafo inferito dal modello addestrato tramite il seguente comando:
+```
+python3 object_detection/export_inference_graph.py --input_type=image_tensor --pipeline_config_path=object_detection/training/ssd_mobilenet_v1_pets.config --trained_checkpoint_prefix=object_detection/targa_graph/model.ckpt --output_directory=path/to/exported_model_directory
+```
