@@ -12,10 +12,7 @@ Queste istruzioni guidano nell'installazione del progetto su una macchina, a sco
 - tensorflow-gpu 1.14 (opzionale)
 - tensorflow-object_detection_api
 
-Clonare questa repository nella directory del progetto, che chiameremo ```<root>```.
-```
-git clone https://github.com/SantAndrea/license-plate-recognition.git
-```
+Da ora in avanti chiameremo <i>root</i> la directory principale del progetto.
 
 Clonare la repository tensorflow/models e seguire le istruzioni che si trovano alla pagina https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md (saltare il passaggio COCO API installation).
 
@@ -27,6 +24,13 @@ python setup.py build
 python setup.py install
 ```
 
+Clonare questa repository nella directory ```models/research/object_detection```.
+```
+git clone https://github.com/SantAndrea/license-plate-recognition.git
+```
+
+È possibile anche eliminare la cartella model e tutto il suo contenuto, ad eccezione di ```models/research/object_detection``` e di ```models/research/slim```.
+
 ### Training
 
 Per il training è stato usato il tool <b>OIDv4 Toolkit</b> per recuperare le immagini da dare in input alla rete durante l'addestramento.
@@ -35,7 +39,7 @@ Da <i>root</i> digitare i seguenti comandi:
 ```
 git clone https://github.com/EscVM/OIDv4_ToolKit.git
 ```
-e, successivamente, entrando nella cartella appena creata, digitare
+e, successivamente, entrando nella cartella appena creata, digitare il comando:
 ```
 pip install -r requirements.txt
 ```
@@ -73,7 +77,7 @@ OIDv4_ToolKit
                 |
                 └─── Vehicle Registration Plate
 ```
-Nelle cartelle in train e in test sono presenti le immagini scaricate e una cartella <b>Label</b>, contenente un file <i>.txt</i> per ciacuna immagine. Ogni file indica le coordinate di uno o più <i>bounding box</i> all'interno della foto. Per esempio:
+Nelle cartelle presenti in train e in test sono presenti le immagini scaricate e una cartella <b>Label</b>, contenente un file <i>.txt</i> per ciacuna immagine. Ogni file indica le coordinate di uno o più <i>bounding box</i> all'interno della foto. Per esempio:
 ```
 Vehicle registration plate 624.0 609.920256 691.84 624.639744
 ```
@@ -112,4 +116,10 @@ OIDv4_ToolKit
                 └─── Vehicle Registration Plate
                     └─── Label
                         └─── test_labels.csv
+```
+
+I file .csv appena creati saranno necessari al generatore di TFrecord. È necessario quindi lanciare lo script <i>object_detection/generate_tfrecord.py</i> per ognuno dei file.
+Esempio:
+```
+python3 generate_tfrecord.py --csv_input=data/train_labels.csv  --output_path=data/train.record
 ```
