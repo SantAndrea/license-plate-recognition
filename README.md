@@ -32,6 +32,8 @@ git clone https://github.com/idealo/image-super-resolution.git
 git clone https://github.com/pjreddie/darknet.git
 ```
 
+Spostare il contenuto della cartella ```src``` al suo esterno.
+
 È possibile anche eliminare la cartella model e tutto il suo contenuto, ad eccezione di ```models/research/object_detection``` e di ```models/research/slim```.
 
 Spostare la cartella ```darknet``` in ```object_detection/ocr```. Dopodiché, aprirla e digitare il comando ```make``` per compilare Darknet.
