@@ -11,6 +11,7 @@ Queste istruzioni guidano nell'installazione del progetto su una macchina, a sco
 - tensorflow 1.14
 - tensorflow-gpu 1.14 (opzionale)
 - tensorflow-object_detection_api
+- ISR
 
 Da ora in avanti chiameremo <i>root</i> la directory principale del progetto.
 
@@ -24,12 +25,18 @@ python setup.py build
 python setup.py install
 ```
 
-Clonare questa repository nella directory ```models/research/object_detection```.
+Clonare queste repository nella directory ```models/research/object_detection```.
 ```
 git clone https://github.com/SantAndrea/license-plate-recognition.git
+git clone https://github.com/idealo/image-super-resolution.git
+git clone https://github.com/pjreddie/darknet.git
 ```
 
 È possibile anche eliminare la cartella model e tutto il suo contenuto, ad eccezione di ```models/research/object_detection``` e di ```models/research/slim```.
+
+Spostare la cartella ```darknet``` in ```object_detection/ocr```. Dopodiché, aprirla e digitare il comando ```make``` per compilare Darknet.
+
+In ```object_detection``` creare due cartelle, necessarie al funzionamento del programma: ```superres``` e ```ROI```
 
 ### Training
 
@@ -131,7 +138,9 @@ python3 object_detection/legacy/train.py --logtostderr --train_dir=../targa_grap
 ```
 Il modello addestrato verrà salvato in ```train_dir```
 
-Come ultima cosa, è necessario esportare un grafo inferito dal modello addestrato tramite il seguente comando:
+Come ultima cosa, è necessario esportare un grafo inferito dal modello addestrato tramite il seguente comando (di esempio):
 ```
 python3 object_detection/export_inference_graph.py --input_type=image_tensor --pipeline_config_path=object_detection/training/ssd_mobilenet_v1_pets.config --trained_checkpoint_prefix=object_detection/targa_graph/model.ckpt --output_directory=path/to/exported_model_directory
 ```
+
+### Testing
