@@ -32,7 +32,7 @@ git clone https://github.com/idealo/image-super-resolution.git
 git clone https://github.com/pjreddie/darknet.git
 ```
 
-Spostare il contenuto della cartella ```src``` al suo esterno.
+Spostare il contenuto della cartella ```src``` e i file situati a URL di questa repository in ```models/research/object_detection```.
 
 È possibile anche eliminare la cartella model e tutto il suo contenuto, ad eccezione di ```models/research/object_detection``` e di ```models/research/slim```.
 
@@ -40,7 +40,7 @@ Spostare la cartella ```darknet``` in ```object_detection/ocr```. Dopodiché, ap
 
 In ```object_detection``` creare due cartelle, necessarie al funzionamento del programma: ```superres``` e ```ROI```
 
-### Training
+## Training
 
 Per il training è stato usato il tool <b>OIDv4 Toolkit</b> per recuperare le immagini da dare in input alla rete durante l'addestramento.
 
@@ -145,4 +145,4 @@ Come ultima cosa, è necessario esportare un grafo inferito dal modello addestra
 python3 object_detection/export_inference_graph.py --input_type=image_tensor --pipeline_config_path=object_detection/training/ssd_mobilenet_v1_pets.config --trained_checkpoint_prefix=object_detection/targa_graph/model.ckpt --output_directory=path/to/exported_model_directory
 ```
 
-### Testing
+## Testing
