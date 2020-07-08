@@ -32,7 +32,7 @@ git clone https://github.com/idealo/image-super-resolution.git
 git clone https://github.com/pjreddie/darknet.git
 ```
 
-Spostare il contenuto della cartella ```src``` e i file situati a URL di questa repository in ```models/research/object_detection```.
+Spostare il contenuto della cartella ```src``` di questa repository e i file situati a https://drive.google.com/file/d/1PLS5oWw-nS_jGNoTO_qS9nsYJOgeFcNo/view?usp=sharing in ```models/research/object_detection```.
 
 È possibile anche eliminare la cartella model e tutto il suo contenuto, ad eccezione di ```models/research/object_detection``` e di ```models/research/slim```.
 
