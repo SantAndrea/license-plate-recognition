@@ -17,7 +17,7 @@ Da ora in avanti chiameremo <i>root</i> la directory principale del progetto.
 
 Clonare la repository tensorflow/models e seguire le istruzioni che si trovano alla pagina https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md (saltare il passaggio COCO API installation).
 
-In caso di problemi con le librerie ```slim```, occorre compilarle.
+In caso di problemi con le librerie ```slim```, occorre ricompilarle.
 ```
 Da root/models/research/slim
 
@@ -32,7 +32,7 @@ git clone https://github.com/idealo/image-super-resolution.git
 git clone https://github.com/pjreddie/darknet.git
 ```
 
-Spostare il contenuto della cartella ```src``` di questa repository e i file situati a https://drive.google.com/file/d/1PLS5oWw-nS_jGNoTO_qS9nsYJOgeFcNo/view?usp=sharing in ```models/research/object_detection```.
+Spostare il contenuto della cartella ```src``` di questa repository e i file situati a https://drive.google.com/file/d/1PLS5oWw-nS_jGNoTO_qS9nsYJOgeFcNo/view?usp=sharing in ```models/research/object_detection```, sovrascrivendo quelli presenti.
 
 È possibile anche eliminare la cartella model e tutto il suo contenuto, ad eccezione di ```models/research/object_detection``` e di ```models/research/slim```.
 
@@ -133,7 +133,9 @@ Esempio:
 python3 generate_tfrecord.py --csv_input=data/train_labels.csv  --output_path=data/train.record
 ```
 
-Una volta creati i file si può iniziare ad addestrare un modello. Il modello originariamente scelto è stato <b>ssd_mobilenet_v1_coco_2018_01_28</b>, incluso in questa repository.
+Modificare opportunamente i percorsi, relativi ai file .record e ai .checkpoint del modello preaddestrato, indicati nei file <i>.config</i> situati in ```training``` e in ```targa_graph```.
+Una volta creati i file si può iniziare ad addestrare un modello. Il modello originariamente scelto è stato <b>ssd_mobilenet_v1_coco_2018_01_28</b>, incluso tra i file extra scaricabili dal link situato all'inizio del readme.
+
 Esempio:
 ```
 python3 object_detection/legacy/train.py --logtostderr --train_dir=../targa_graph --pipeline_config_path=object_detection/training/ssd_mobilenet_v1_pets.config
@@ -146,3 +148,16 @@ python3 object_detection/export_inference_graph.py --input_type=image_tensor --p
 ```
 
 ## Testing
+
+Per avviare il test della soluzione basta disporre di un'immagine o di una cartella di immagini. I formati supportati sono <i>.jpg</i>, <i>.jpeg</i> e <i>.png</i>
+
+Esempio di test per una singola immagine:
+```
+python3 test_one.py --image_path="images/car.png"
+```
+
+Esempio di test su una cartella di immagini:
+
+```
+python3 test_one.py --images_path="images"
+```
