@@ -8,9 +8,9 @@ import glob
 import time
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--image_path', required = True)
+parser.add_argument('--images_path', required = True)
 args = parser.parse_args()
-imgs_paths = sorted(glob.glob('%s/*.*' % args.image_path))
+imgs_paths = sorted(glob.glob('%s/*.*' % args.images_path))
 
 fp1 = open("tempo.txt","a")
 flag = False
